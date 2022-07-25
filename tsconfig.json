@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    /* Specify ECMAScript target version */
+    "target": "esnext",
+    /* Specify module pattern to be used in code generated */
+    "module": "CommonJS",
+    /* Specify library files to be included in the compilation. */
+    "lib": ["esnext"],
+    /* Generates corresponding '.d.ts' file. */
+    "declaration": true,
+    /* Do not emit compiled outputs, becouse Babel will transpile the source. */
+    "emitDeclarationOnly": false,
+    /* Redirect output structure to the directory. */
+    "outDir": "./dist",
+    /* Enable all strict type-checking options. */
+    "strict": true,
+    /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "moduleResolution": "node",
+    /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "esModuleInterop": true,
+    /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true,
+    /* Suppress JSX flag error (ts17004), the option is "preserve" because JSX is transpiled by Babel. */
+    "jsx": "preserve",
+  },
+  /* Specify the path including the files to be processed. */
+  "include": ["src/**/*"],
+}
