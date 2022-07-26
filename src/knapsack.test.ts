@@ -9,6 +9,10 @@ describe('knapsack', () => {
           weight: 100,
           value: 50,
         },
+        {
+          weight: 120,
+          value: 60,
+        },
       ],
       10,
       0,
