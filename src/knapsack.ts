@@ -12,7 +12,11 @@ export const KnapsackError = {
 export type KnapsackErrorType =
   typeof KnapsackError[keyof typeof KnapsackError];
 
-export default function knapsackFactory(products: Product[]) {
+export default function knapsackFactory(weights: number[], values: number[]) {
+  const products: Product[] = weights.map((weight, index) => ({
+    weight,
+    value: values[index],
+  }));
   if (products.length <= 1 || products.length > 100) {
     throw new Error(KnapsackError.OutOfProductsCount);
   }

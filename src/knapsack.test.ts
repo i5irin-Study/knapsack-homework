@@ -169,7 +169,10 @@ describe('without library', () => {
     'should match the expected value as a result of the knapsack problem',
     (products, weightLimit, maxValueExpected) => {
       expect.assertions(1);
-      const knapsack = knapsackFactory(products);
+      const knapsack = knapsackFactory(
+        products.map((p) => p.weight),
+        products.map((p) => p.value),
+      );
       expect(knapsack(0, weightLimit)).toStrictEqual(maxValueExpected);
     },
   );
@@ -509,7 +512,10 @@ describe('without library', () => {
     ({ products, weightLimit, errorMessage }) => {
       expect.assertions(1);
       expect(() => {
-        const knapsack = knapsackFactory(products);
+        const knapsack = knapsackFactory(
+          products.map((p) => p.weight),
+          products.map((p) => p.value),
+        );
         knapsack(0, weightLimit);
       }).toThrow(errorMessage);
     },
@@ -531,7 +537,10 @@ describe('with library', () => {
     'should match the expected value as a result of the knapsack problem',
     ({ products, weightLimit, expectedValue }) => {
       expect.assertions(1);
-      const knapsack = knapsackFactory(products);
+      const knapsack = knapsackFactory(
+        products.map((p) => p.weight),
+        products.map((p) => p.value),
+      );
       expect(knapsack(0, weightLimit)).toStrictEqual(expectedValue);
     },
   );
