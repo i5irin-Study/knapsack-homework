@@ -4,21 +4,29 @@ export type Product = {
 };
 
 export default function knapsackFactory(products: Product[]) {
+  const cache: number[][] = [...Array(products.length)].map(() => []);
   // Returns the value if the item was selected or not selected, whichever is more expensive.
   return function knapsack(depth: number, space: number): number {
     // No products exist to select
     if (depth >= products.length) {
       return 0;
     }
+    if (cache[depth][space] !== undefined) {
+      return cache[depth][space];
+    }
     const { weight, value } = products[depth];
     if (space < weight) {
       // This product is not selected because it is overweight
-      return knapsack(depth + 1, space);
+      const overweightResult = knapsack(depth + 1, space);
+      cache[depth][space] = overweightResult;
+      return overweightResult;
     }
     // Whether to choose this product or not
-    return Math.max(
+    const result = Math.max(
       knapsack(depth + 1, space - weight) + value,
       knapsack(depth + 1, space),
     );
+    cache[depth][space] = result;
+    return result;
   };
 }
